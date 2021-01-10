@@ -13,3 +13,12 @@ class product(models.Model):
 
     def __str__(self):
         return self.product_name
+
+class About(models.Model):
+    about = models.TextField()
+    name = models.CharField(max_length=50)
+    address1 = models.CharField(max_length=50, blank=True)
+    address2 = models.CharField(max_length=50, blank=True)
+    district = models.CharField(max_length=50, blank=True)
+    pin_code = models.CharField(max_length=6, blank=True)
+    phone_number = models.CharField(max_length=10, blank=True)

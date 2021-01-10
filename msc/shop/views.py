@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import product
+from .models import product, About
 from math import ceil
 
 # Create your views here.
@@ -29,5 +29,7 @@ def checkout(request):
     return HttpResponse("We are at checkout")
 
 def about(request):
-    return HttpResponse("We are in about")
+    about = About.objects.first()
+    params = {'data': about}
+    return render(request,"shop/about.html", params)
 

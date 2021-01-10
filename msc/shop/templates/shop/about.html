@@ -1,3 +1,15 @@
 {% extends 'shop/basic.html' %}
 {% block title%} About {% endblock%}
-{% block body%} Body {% endblock%}
+{% block body%}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{data.name}}</h5>
+        <p class="card-text">{{data.about}}</p>
+        <p class="card-text">{{data.address1}}</p>
+        <p class="card-text text-primary">{{data.address2}}</p>
+        <p class="card-text text-secondary">{{data.district}}</p>
+    </div>
+</div>
+
+{% endblock%}
