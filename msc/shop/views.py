@@ -28,8 +28,6 @@ def productview(request):
 def checkout(request):
     return HttpResponse("We are at checkout")
 
-
 def about(request):
-    return HttpResponse("This shop is medical store for all allopathic and ayurvedic medicine")
-
+    return HttpResponse("We are in about")
 
