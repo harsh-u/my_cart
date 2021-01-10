@@ -58,28 +58,15 @@
 
       <div class="carousel-inner">
         <div class="carousel-item active">
-
+            {% for product in allProds %}
             <div class="col-xs-3 col-sm-3 col-md-3">
               <div class="card" style="width: 18rem;">
-                <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
-
-            {% for i in product|slice:"1:" %}
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <div class="card" style="width: 18rem;">
-                <img src='{% static "shop/test.jpg" %}' class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title">{{product.product_name.capitalize}}</h5>
+                  <p class="card-text">{{product.desc}}</p>
+                    <p class="card-text"><b>Rs. {{product.price}}</b></p>
+                    <p class="card-text"><b>{{product.catogery}}</b></p>
+                  <a href="#" class="btn btn-primary">Buy now</a>
                 </div>
               </div>
             </div>

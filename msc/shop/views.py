@@ -8,10 +8,8 @@ from django.http import HttpResponse
 
 def index(request):
     products = product.objects.all()
-    n = len(products)
-    nSlides = n//4 + ceil((n/4)-(n//4))
-    allProds = [[products, range(1, len(products)), nSlides],[products, range(1, len(products)), nSlides]]
-    params={'allProds' : allProds }
+    params={'allProds' : products }
+
     return render(request,"shop/index.html", params)
 
 
@@ -31,7 +29,7 @@ def checkout(request):
     return HttpResponse("We are at checkout")
 
 
-
-
+def about(request):
+    return HttpResponse("This shop is medical store for all allopathic and ayurvedic medicine")
 
 
