@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+         body {
+         {% block css %}
+         background-color: rgba(0,123,255,.5);
+ {% endblock %}
+
+
+         }
+      </style>
+   </head>
+
+   <body>
+      <h1>Connect with Tutors</h1>
+   </body>
+</html>
+
+
+
+
+
+                body{
+                {% block css %}
+                  background-color: rgba(0,123,255,.5);
+                 {% endblock %}
+                 }
+
+<div class="card" style="width: 18rem;">
+    <style>
+             body{
+                {% block css %}
+                  background-color: rgba(0,123,255,.5);
+                 {% endblock %}
+                 }
+             </style>
+
+        <div class="card-body">
+
+
+            <h5 class="card-title">{{data.name}}</h5>
+            <p class="card-text">{{data.about}}</p>
+            <p class="card-text">{{data.address1}}</p>
+            <p class="card-text text-primary">{{data.address2}}</p>
+            <p class="card-text text-secondary">{{data.district}}</p>
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -33,3 +33,7 @@ def about(request):
     params = {'data': about}
     return render(request,"shop/about.html", params)
 
+
+def test(request):
+    return render(request,"shop/test.html")
+

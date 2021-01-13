@@ -1,15 +1,57 @@
 {% extends 'shop/basic.html' %}
-{% block title%} About {% endblock%}
+{% block title%}About{% endblock%}
 {% block body%}
+<style>
+    .underline{
+        text-decoration-line:underline;
+        text-decoration-thickness:5px;
+        text-decoration-color:green;
+}
+    .mid{
+        margin-left:20%;
+        margin-right:30%;
+    }
+    .background{
+        background-color: rgba(0,123,255,.5);
+    }
+</style>
 
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">{{data.name}}</h5>
-        <p class="card-text">{{data.about}}</p>
-        <p class="card-text">{{data.address1}}</p>
-        <p class="card-text text-primary">{{data.address2}}</p>
-        <p class="card-text text-secondary">{{data.district}}</p>
-    </div>
+
+<div class="backgorund">
+<div class="container">
+
+<img style="margin-left:20%" src="http://127.0.0.1:8000/media/shop/images/elon.jpg" height="300px" width="400px" alt="Responsive image">
+<div class="mid">
+
+<!--    <style>-->
+<!--             body{-->
+<!--                {% block css %}-->
+<!--                  background-color: rgba(0,123,255,.5);-->
+
+<!--                 {% endblock %}-->
+<!--                 }-->
+
+<!--             </style>-->
+    <h1 class="underline">About the Developer </h1>
+    </br>
+    <h3>{{data.name}}</h3>
+    <p>{{data.about}}</p>
+    </br>
+    </br>
+    <h2 class="underline">ADDRESS :- </h2>
+    <p>{{data.address1}}</p>
+    <p>{{data.address2}}</p>
+    <p>{{data.district}}</p>
+    <h2 class="underline">Contact Us :- </h2>
+    <p> Email: {{data.email_id}}</p>
+    <p>Phone Number: {{data.phone_number}}</p>
+
+
 </div>
+</div>
+</div>
+
+
+
 
 {% endblock%}
