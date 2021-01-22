@@ -29,8 +29,8 @@ def checkout(request):
     return HttpResponse("We are at checkout")
 
 def about(request):
-    about = About.objects.first()
-    params = {'data': about}
+    about = About.objects.all()[1]
+    params = {'data':about }
     return render(request,"shop/about.html", params)
 
 

@@ -15,23 +15,22 @@
         background-color: rgba(0,123,255,.5);
     }
 </style>
-
-
-<div class="backgorund">
+{% load static %}
 <div class="container">
 
-<img style="margin-left:20%" src="http://127.0.0.1:8000/media/shop/images/elon.jpg" height="300px" width="400px" alt="Responsive image">
+<img style="margin-left:20%" src="/media/{{data.image}}" height="300px" width="400px" alt="Responsive image">
+
 <div class="mid">
 
-<!--    <style>-->
-<!--             body{-->
-<!--                {% block css %}-->
-<!--                  background-color: rgba(0,123,255,.5);-->
+    <style>
+             body{
+                {% block css %}
+                  background-color: rgba(0,123,255,.5);
 
-<!--                 {% endblock %}-->
-<!--                 }-->
+                 {% endblock %}
+                 }
 
-<!--             </style>-->
+             </style>
     <h1 class="underline">About the Developer </h1>
     </br>
     <h3>{{data.name}}</h3>
