@@ -1,0 +1,20 @@
+{% extends 'shop/basic.html' %}
+{% block body %}
+{% load static %}
+<div class="container" xmlns:data="http://www.w3.org/1999/xhtml">
+    <div id="demo">
+                {% for cart_item in cart %}
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{cart_item.product.product_name.capitalize}}</h5>
+                            <a href="{% url 'shop:add_to_cart' product_id=cart_item.product.id number=-1 %}" class="btn btn-primary">-</a>
+                            <a class="card-text">{{cart_item.count}}</a>
+                            <a href="{% url 'shop:add_to_cart' product_id=cart_item.product.id number=1 %}" class="btn btn-primary">+</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

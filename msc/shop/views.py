@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import product, About
+from .models import product, About, ShoppingCart
 from math import ceil
+from django.shortcuts import redirect
 
 # Create your views here.
 from django.http import HttpResponse
@@ -37,3 +38,36 @@ def about(request):
 def test(request):
     return render(request,"shop/test.html")
 
+def do_add_to_cart(product_id, number):
+    prod = product.objects.get(pk=product_id)
+    cart, _ = ShoppingCart.objects.get_or_create(product=prod)
+    cart.count = cart.count + number
+    cart.save()
+
+
+def add_to_cart(request, product_id, number):
+    do_add_to_cart(product_id, number)
+
+    response = redirect('/shop/cart/')
+    return response
+
+
+def buy_now(request, product_id):
+    do_add_to_cart(product_id, 1)
+
+    response = redirect('/shop/cart/')
+    return response
+
+def cart(request):
+    cart =  ShoppingCart.objects.all()
+    params={'cart' : cart }
+    return render(request,"shop/cart.html", params)
+
+class NegativeIntConverter:
+    regex = '-?\d+'
+
+    def to_python(self, value):
+        return int(value)
+
+    def to_url(self, value):
+        return '%d' % value

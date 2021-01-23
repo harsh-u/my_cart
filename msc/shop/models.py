@@ -15,6 +15,9 @@ class product(models.Model):
     def __str__(self):
         return self.product_name
 
+class ShoppingCart(models.Model):
+    product = models.ForeignKey(product, on_delete=models.CASCADE)
+    count = models.PositiveIntegerField(default=0)
 
 class About(models.Model):
     about = models.TextField()
