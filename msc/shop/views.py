@@ -1,17 +1,37 @@
 from django.shortcuts import render
 from .models import product, About, ShoppingCart
-from math import ceil
 from django.shortcuts import redirect
+
+
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+
+
 
 # Create your views here.
 from django.http import HttpResponse
 
-
+@login_required
 def index(request):
     products = product.objects.all()
     params={'allProds' : products }
-
     return render(request,"shop/index.html", params)
+
+def sign_up(request):
+    context={}
+    form=UserCreationForm(request.POST or None)
+    if request.method=="POST":
+        if form.is_valid():
+            User=form.save()
+            login(request, User)
+            render(request,'shop/index.html')
+    context['form']=form
+    return render(request,'shop/sign_up.html',context)
+
+# def login(request):
+#     return render(request,"shop/login.html")
 
 
 def contact(request):
@@ -58,10 +78,21 @@ def buy_now(request, product_id):
     response = redirect('/shop/cart/')
     return response
 
+def remove(request,product_id):
+    prod = product.objects.get(pk=product_id)
+    prod.delete()
+    response = redirect('/shop/cart/')
+    return response
+
+
+
+
+
 def cart(request):
     cart =  ShoppingCart.objects.all()
     params={'cart' : cart }
     return render(request,"shop/cart.html", params)
+
 
 class NegativeIntConverter:
     regex = '-?\d+'

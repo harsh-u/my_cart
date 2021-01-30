@@ -7,10 +7,13 @@
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
+                              <img style="" src="/media/{{cart_item.product.image}}" height="300px" width="250px" alt="Responsive image">
                             <h5 class="card-title">{{cart_item.product.product_name.capitalize}}</h5>
                             <a href="{% url 'shop:add_to_cart' product_id=cart_item.product.id number=-1 %}" class="btn btn-primary">-</a>
                             <a class="card-text">{{cart_item.count}}</a>
                             <a href="{% url 'shop:add_to_cart' product_id=cart_item.product.id number=1 %}" class="btn btn-primary">+</a>
+                            <a href="{% url 'shop:remove' product_id=cart_item.product.id %}" class="btn btn-primary">Remove</a>
+
                         </div>
                     </div>
                 </div>
