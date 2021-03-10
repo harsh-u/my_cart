@@ -3,35 +3,29 @@ from .models import product, About, ShoppingCart
 from django.shortcuts import redirect
 
 
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.models import User
+# from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth import login
+# from django.contrib.auth.decorators import login_required
 
 
 
 # Create your views here.
 from django.http import HttpResponse
 
-@login_required
+# @login_required
 def index(request):
     products = product.objects.all()
     params={'allProds' : products }
     return render(request,"shop/index.html", params)
 
-def sign_up(request):
-    context={}
-    form=UserCreationForm(request.POST or None)
-    if request.method=="POST":
-        if form.is_valid():
-            User=form.save()
-            login(request, User)
-            render(request,'shop/index.html')
-    context['form']=form
-    return render(request,'shop/sign_up.html',context)
-
-# def login(request):
-#     return render(request,"shop/login.html")
+def signup(request):
+    if request.method=="GET":
+        return render(request,"shop/signup.html")
+    else:
+        return HttpResponse(request.POST.get('first_name'))
+def login(request):
+    return render(request,"shop/login.html")
 
 
 def contact(request):

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django import forms
 
 # Create your models here.
 class product(models.Model):
@@ -32,3 +32,9 @@ class About(models.Model):
 
     def __str__(self):
         return self.name
+class Customer(models.Model):
+    first_name=forms.CharField(max_length=50)
+    last_name=models.CharField(max_length=50)
+    phone=models.CharField(max_length=15)
+    email=models.EmailField()
+    password=models.CharField(max_length=500)

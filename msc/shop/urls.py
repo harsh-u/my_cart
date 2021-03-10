@@ -1,14 +1,14 @@
 from django.urls import path
 from django.urls import register_converter
-from shop import views
+# from shop import views
 from . import views
 
 register_converter(views.NegativeIntConverter, 'negint')
 
 
 urlpatterns = [
-    path("", views.sign_up, name="sign_up"),
-    path("shop/", views.index, name="ShopHome"),
+    # path("", views.sign_up, name="sign_up"),
+    path("", views.index, name="ShopHome"),
     path("about/", views.about, name="About"),
     path("contact/", views.contact, name="ContactUs"),
     path("productview/", views.productview, name="ProductView"),
@@ -20,6 +20,9 @@ urlpatterns = [
     path("buy_now/<int:product_id>", views.buy_now, name="buy_now"),
     path("remove/<int:product_id>", views.remove, name="remove"),
     path("cart/", views.cart, name="cart"),
+
+
+    path("signup/", views.signup, name="signup"),
 ]
 
 app_name = 'shop'
