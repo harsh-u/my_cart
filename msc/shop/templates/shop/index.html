@@ -66,7 +66,7 @@
                   <h5 class="card-title">{{product.product_name.capitalize}}</h5>
                   <p class="card-text">{{product.desc}}</p>
                     <p class="card-text"><b>Rs. {{product.price}}</b></p>
-                    <p class="card-text"><b>{{product.catogery}}</b></p>
+                    <p class="card-text"><b>{{product.category.sub_category}}</b></p>
                   <a href="{% url 'shop:buy_now' product_id=product.id %}" class="btn btn-primary">Buy now</a>
                 </div>
               </div>

@@ -1,14 +1,12 @@
 from django.db import models
 
 
-class Catogery(models.Model):
-    catogery_id = models.AutoField
-    catogeries = models.CharField(max_length=50, default="")
-    subcatogery = models.CharField(max_length=50, default="")
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+    sub_category = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.catogery
-
+        return f"{self.name}-{self.sub_category}"
 
 class product(models.Model):
     product_id = models.AutoField
@@ -17,7 +15,7 @@ class product(models.Model):
     desc = models.CharField(max_length=300)
     pub_date = models.DateField()
     image = models.ImageField(upload_to="shop/images", default="")
-    catogery = models.ForeignKey(Catogery, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True, default=None)
 
     def __str__(self):
         return self.product_name

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import product, About, ShoppingCart, Catogery
+from .models import product, About, ShoppingCart, Category
 from django.shortcuts import redirect
 
 
