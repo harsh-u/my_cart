@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import product, About, ShoppingCart, Category
+from .models import product, About, ShoppingCart, Category, Customer
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from .forms import AddressForm
@@ -38,6 +38,10 @@ def signup(request):
             user.first_name= first_name
             user.last_name = last_name
             user.save()
+
+            customer, _ = Customer.objects.get_or_create(user=user)
+            customer.phone = mobile
+            customer.save()
 
         return HttpResponse(f"{first_name} {last_name}")
 

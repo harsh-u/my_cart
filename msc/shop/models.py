@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -42,11 +42,11 @@ class About(models.Model):
         return self.name
 
 class Customer(models.Model):
-    first_name=models.CharField(max_length=50)
-    last_name=models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, default=None)
     phone=models.CharField(max_length=15)
-    email=models.EmailField()
-    password=models.CharField(max_length=500)
+
+    def __str__(self):
+        return f"{self.user.first_name} {self.user.last_name}({self.phone})"
 
 class Address(models.Model):
     address1 = models.CharField(max_length=50)

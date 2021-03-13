@@ -28,14 +28,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Catogery',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('catogeries', models.CharField(default='', max_length=50)),
-                ('subcatogery', models.CharField(default='', max_length=50)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Customer',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
