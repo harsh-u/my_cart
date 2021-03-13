@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import product, About, ShoppingCart, Category
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from .forms import AddressForm
+from django.http import HttpResponseRedirect
 
 # from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserCreationForm
@@ -41,6 +43,22 @@ def signup(request):
 
 def login(request):
     return render(request,"shop/login.html")
+
+def address(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = AddressForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            instance = form.save()
+            return HttpResponseRedirect('/shop/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = AddressForm()
+
+    return render(request, 'shop/address.html', {'form': form})
 
 
 def contact(request):

@@ -47,3 +47,14 @@ class Customer(models.Model):
     phone=models.CharField(max_length=15)
     email=models.EmailField()
     password=models.CharField(max_length=500)
+
+class Address(models.Model):
+    address1 = models.CharField(max_length=50)
+    address2 = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    pincode = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.address1} {self.address2}"
+

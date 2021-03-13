@@ -25,6 +25,10 @@ urlpatterns = [
 
 
     path("signup/", views.signup, name="signup"),
+    path("login/", views.login, name="login"),
+    path("address/", views.address, name="address"),
+
+
 ]
 
 app_name = 'shop'
