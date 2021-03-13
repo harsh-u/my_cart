@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import product, About, ShoppingCart, Category
 from django.shortcuts import redirect
-
+from django.contrib.auth.models import User
 
 # from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserCreationForm
@@ -23,7 +23,22 @@ def signup(request):
     if request.method=="GET":
         return render(request,"shop/signup.html")
     else:
-        return HttpResponse(request.POST.get('first_name'))
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        password = request.POST.get('password')
+
+        user, created = User.objects.get_or_create(username=email)
+        if created:
+            user.email = email
+            user.password = password
+            user.first_name= first_name
+            user.last_name = last_name
+            user.save()
+
+        return HttpResponse(f"{first_name} {last_name}")
+
 def login(request):
     return render(request,"shop/login.html")
 
