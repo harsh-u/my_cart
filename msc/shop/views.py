@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import product, About, ShoppingCart
+from .models import product, About, ShoppingCart, Catogery
 from django.shortcuts import redirect
 
 
@@ -16,7 +16,7 @@ from django.http import HttpResponse
 # @login_required
 def index(request):
     products = product.objects.all()
-    params={'allProds' : products }
+    params={'allProds' : products}
     return render(request,"shop/index.html", params)
 
 def signup(request):
@@ -96,3 +96,4 @@ class NegativeIntConverter:
 
     def to_url(self, value):
         return '%d' % value
+

@@ -9,13 +9,13 @@
 
             <h3 class="alert alert-light border rounded">Create An Account</h3>
 
-            <form action="/shop/signup/" method="POST">
+            <form action="/shop/signup/" method="post">
                 {% csrf_token %}
 
                  <!-- first name-->
-                  <div class="mb-3 ">
+                  <div class="form-group">
                     <label for="" class="form-label">First Name</label>
-                    <input type="text" class="form-control form-control-sm" id="" placeholder="">
+                    <input type="text" class="form-control form-control-sm" id="" placeholder=""/>
                   </div>
                     <!--last name-->
                   <div class="mb-3 ">

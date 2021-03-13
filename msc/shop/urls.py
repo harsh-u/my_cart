@@ -20,6 +20,8 @@ urlpatterns = [
     path("buy_now/<int:product_id>", views.buy_now, name="buy_now"),
     path("remove/<int:product_id>", views.remove, name="remove"),
     path("cart/", views.cart, name="cart"),
+    # path("iphones/", views.iphones, name="iphones"),
+    # path("books/", views.books, name="books"),
 
 
     path("signup/", views.signup, name="signup"),
